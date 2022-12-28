@@ -1,16 +1,13 @@
 class Neuronio:
-    def __init__(self,func,*n):
-        soma = 0
-        for i in n:
-            soma += i
-        self.output = soma/len(n)
-        print(f'Neurônio criado. Saída {self.output}')
+    def __init__(self,func,*n,msg=False):
+        self.funcao = func #neurônio recebe a função atribuída  ele
+        self.polarizacao(n,msg) #processa as entradas no neurônio e chama a função para calcular a saída (output)
+        print(f'Neurônio criado. Saída {self.output}') if msg else ""
 
-    def polarizacao(self,*n):
-        soma = 0
-        for i in n:
-            soma += i
-        self.output = soma / len(n)
+    def polarizacao(self, v,msg=False):
+        media = soma(v) / len(v)
+        self.output = self.funcao(media)
+        print(f'Neurônio polarizado. Saída {self.output}') if msg else ""
 
 
 def zeroum(n=0):
@@ -27,10 +24,10 @@ def s(n=0):
     else:
         return n
 
+def soma(n):
+    s = 0
+    for i in n:
+        s += i
+    return s
 
-a = Neuronio(s,0.8)
 
-a.polarizacao(0.8,0.6,1,-0.3)
-y = a.output
-
-print(f'Neurônio polarizado {y}')
