@@ -3,6 +3,8 @@ from random import randrange, random, randint
 from neuronios import *
 from datetime import datetime
 import hashlib
+from functions import *
+
 
 camadas = [256*8,256*8,256*8,256*8,256*8,256*8,256*8,256*8,256*8,256]
 entradas = 256*8
@@ -45,7 +47,7 @@ neuron =[]
 for i in range(0,len(camadas)):
     a =[]
     for j in range(0,camadas[i]):
-        a.append(Neuronio(s,random(),msg))
+        a.append(Neuronio(sigmoid,random(),msg))
     neuron.append(a)
     del a
 print('Neurons created')
